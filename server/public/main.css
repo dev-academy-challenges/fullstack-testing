@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+}
+
+.form {
+  width: 50%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto 1fr;
+}
+
+.form span {
+  grid-column: 1;
+}
+
+.form input {
+  grid-column: 2;
+}
+
+.form button {
+  grid-column: 2;
+  width: 50%;
+}

@@ -1,12 +1,10 @@
 import React from 'react'
-import Enzyme, {shallow, render, mount} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import './setup-env'
+import { shallow, render, mount } from 'enzyme'
 
-import App from '../../client/components/App'
+import App from '../../client/App'
+
+// Prevent <App> from calling the API
 App.prototype.componentDidMount = () => {}
-
-Enzyme.configure({adapter: new Adapter()})
 
 test('test runner is working', () => {
   expect(true).toBeTruthy()
@@ -25,7 +23,19 @@ test('page header includes fruit', () => {
 })
 
 test('renders an <li> for each fruit', () => {
+  const fruits = [
+    {
+      id: 1,
+      name: 'orange'
+    }, {
+      id: 2,
+      name: 'persimmons'
+    }, {
+      id: 3,
+      name: 'kiwi fruit'
+    }
+  ]
   const wrapper = mount(<App />)
-  wrapper.setState({fruits: ['orange', 'persimmons', 'kiwi fruit']})
+  wrapper.setState({ fruits })
   expect(wrapper.find('li').length).toBe(3)
 })
