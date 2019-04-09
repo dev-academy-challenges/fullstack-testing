@@ -1,0 +1,41 @@
+{
+  "consumer": {
+    "name": "react-client"
+  },
+  "provider": {
+    "name": "express-server"
+  },
+  "interactions": [
+    {
+      "description": "requesting all the fruits",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/fruits",
+        "query": "",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "fruits": [
+            {
+              "id": 1,
+              "name": "apple",
+              "calories": 100
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
