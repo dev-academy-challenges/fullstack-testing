@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, render, mount } from 'enzyme'
 
-import App from '../../client/App'
+import App from '../../../client/App'
 
 // Prevent <App> from calling the API
 App.prototype.componentDidMount = () => {}

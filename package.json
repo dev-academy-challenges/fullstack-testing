@@ -8,8 +8,11 @@
     "dev:server": "nodemon server",
     "dev:client": "npm run build -- --watch",
     "build": "webpack --config client/webpack.config.js",
-    "test": "jest",
-    "pactTest": "export NODE_ENV=pactTest && jest tests/contracts/*.test.js --runInBand"
+    "test": "npm run test:units && npm run test:contracts && exit 0",
+    "test:contracts": "npm run test:contracts:consumer && npm run test:contracts:provider",
+    "test:contracts:consumer": "export NODE_ENV=pactTest && jest tests/client/contracts --runInBand",
+    "test:contracts:provider": "jest tests/server/contracts --runInBand",
+    "test:units": "jest tests/client/components tests/server"
   },
   "babel": {
     "presets": [
@@ -43,6 +46,7 @@
     "@babel/preset-react": "^7.0.0",
     "@pact-foundation/pact": "^8.1.0",
     "babel-loader": "^8.0.5",
+    "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "concurrently": "^4.1.0",
     "enzyme": "^3.7.0",
