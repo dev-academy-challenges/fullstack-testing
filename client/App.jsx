@@ -107,32 +107,36 @@ class App extends React.Component {
         <div className='form'>
           <span>Name:</span>
           <input name='name'
+            data-e2e='selected-name'
             value={editingName || ''}
             onChange={this.handleEditChange} />
 
           <span>Calories:</span>
           <input name='calories'
+            data-e2e='selected-calories'
             value={editingCalories || ''}
             onChange={this.handleEditChange} />
 
-          <button onClick={this.handleUpdate}>Update fruit</button>
-          <button onClick={this.handleDelete}>Delete fruit</button>
-          <button onClick={this.clearSelected}>Clear selection</button>
+          <button onClick={this.handleUpdate} data-e2e='update-button'>Update fruit</button>
+          <button onClick={this.handleDelete} data-e2e='delete-button'>Delete fruit</button>
+          <button onClick={this.clearSelected} data-e2e='clear-button'>Clear selection</button>
         </div>
 
         <h2>Add new</h2>
         <div className='form'>
           <span>Name:</span>
           <input name='name'
+            data-e2e='add-name'
             value={addingName || ''}
             onChange={this.handleAddChange} />
 
           <span>Calories:</span>
           <input name='calories'
+            data-e2e='add-calories'
             value={addingCalories || ''}
             onChange={this.handleAddChange} />
 
-          <button onClick={this.handleAdd}>Add fruit</button>
+          <button onClick={this.handleAdd} data-e2e='add-button'>Add fruit</button>
         </div>
       </div>
     )
