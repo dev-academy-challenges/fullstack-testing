@@ -69,7 +69,7 @@ class App extends React.Component {
   }
 
   handleAdd = () => {
-    const newFruit = { ...this.state.adding, id: 0 }
+    const newFruit = { ...this.state.adding }
     addFruit(newFruit)
       .then(fruits => {
         this.setState({
