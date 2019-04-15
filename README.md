@@ -28,13 +28,8 @@ You can find the server running on [http://localhost:3000](http://localhost:3000
 * a fake database module (`server/db.js`)
 * an API client module (`client/apiClient.js`)
 * a single client-side test (`/tests/client/App.test.js`)
+* tests for the database module (`tests/server/db.test.js`)
 * configuration for Jest and Enzyme (including JSDOM)
 * configuration for server-side debugging in VS Code
-
-
-## What is still yet to implement
-
-* contract testing with Pact
+* contract testing (consumer & provider) with Pact
 * end-to-end testing with Cypress
-* a proper database module (`server/db.js`)
-* tests for the database module (`tests/server/db.test.js`)
