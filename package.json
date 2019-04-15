@@ -10,7 +10,7 @@
     "dev:client": "npm run build -- --watch",
     "knex": "knex --knexfile server/db/knexfile.js",
     "build": "webpack --config client/webpack.config.js",
-    "test": "npm run test:units && npm run test:contracts && exit 0",
+    "test": "npm run test:units && npm run test:contracts && npm run e2e && exit 0",
     "test:contracts": "npm run test:contracts:consumer && npm run test:contracts:provider",
     "test:contracts:consumer": "export NODE_ENV=pactTest && jest tests/client/contracts --runInBand",
     "test:contracts:provider": "jest tests/server/contracts --runInBand",

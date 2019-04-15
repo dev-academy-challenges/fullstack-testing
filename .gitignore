@@ -1,4 +1,6 @@
 node_modules
+screenshots
 bundle.*
 *.log
 *.sqlite3
+*.mp4

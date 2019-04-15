@@ -25,27 +25,33 @@ describe('The homepage', () => {
   })
 
   it('can update fruit', () => {
+    const name = 'blueberries'
+    cy.server()
+    cy.route('/api//v1/fruits').as('fruits')
     cy.visit('/')
     cy.get(secondLink).click()
     cy.get(selectedName).clear()
-    cy.get(selectedName).type('blueberries')
+    cy.get(selectedName).type(name)
     cy.get(updateButton).click()
+    cy.wait('@fruits')
+    cy.get(secondLink).contains(name)
   })
 
   it('can add fruit', () => {
+    const name = 'papaya'
     cy.server()
-    cy.route('fruits').as('fruits')
+    cy.route('/api//v1/fruits').as('fruits')
     cy.visit('/')
-    cy.get(addName).type('Papaya')
+    cy.get(addName).type(name)
     cy.get(addCalories).type('62')
     cy.get(addButton).click()
     cy.wait('@fruits')
-    cy.get(lastLink).contains('Papaya')
+    cy.get(lastLink).contains(name)
   })
 
   it('can delete fruit', () => {
     cy.server()
-    cy.route('fruits').as('fruits')
+    cy.route('/api//v1/fruits').as('fruits')
     cy.visit('/')
     cy.get(lastLink).click()
     cy.get(deleteButton).click()
