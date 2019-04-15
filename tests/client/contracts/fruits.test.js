@@ -11,7 +11,13 @@ const { like, eachLike } = Matchers
 
 describe('The Fruits API', () => {
   const url = 'http://localhost:8989/api/v1/fruits'
-  const fruitsBodyExpectation = { fruits: eachLike({ id: 1, name: 'apple', calories: 100 }) }
+  const fruitsBodyExpectation = {
+    fruits: eachLike({
+      id: 1,
+      name: 'apple',
+      calories: 100
+    })
+  }
 
   // Copy this block once per interaction under test
   describe('getting all the fruits', () => {
