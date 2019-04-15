@@ -8,6 +8,7 @@
     "dev": "concurrently npm:dev:server npm:dev:client",
     "dev:server": "nodemon server",
     "dev:client": "npm run build -- --watch",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "build": "webpack --config client/webpack.config.js",
     "test": "npm run test:units && npm run test:contracts && exit 0",
     "test:contracts": "npm run test:contracts:consumer && npm run test:contracts:provider",
@@ -37,6 +38,8 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "knex": "^0.16.5",
+    "sqlite3": "^4.0.6",
     "superagent": "^5.0.2"
   },
   "devDependencies": {
@@ -68,6 +71,7 @@
     "nodemon": "^1.17.3",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
   }
