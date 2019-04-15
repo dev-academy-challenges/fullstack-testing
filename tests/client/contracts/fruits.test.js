@@ -17,6 +17,7 @@ describe('The Fruits API', () => {
   describe('getting all the fruits', () => {
     beforeEach(() => {
       const interaction = {
+        state: 'Has some fruit',
         uponReceiving: 'requesting all the fruits',
         withRequest: {
           method: 'GET',
@@ -50,6 +51,7 @@ describe('The Fruits API', () => {
   describe('updating a fruit', () => {
     beforeEach(() => {
       const interaction = {
+        state: 'Has some fruit',
         uponReceiving: 'updated fruits',
         withRequest: {
           method: 'PUT',
@@ -94,6 +96,7 @@ describe('The Fruits API', () => {
   describe('adding a fruit', () => {
     beforeEach(() => {
       const interaction = {
+        state: 'Has some fruit',
         uponReceiving: 'added fruits',
         withRequest: {
           method: 'POST',
@@ -138,6 +141,7 @@ describe('The Fruits API', () => {
   describe('deleting a fruit', () => {
     beforeEach(() => {
       const interaction = {
+        state: 'Has some fruit',
         uponReceiving: 'all but the deleted fruits',
         withRequest: {
           method: 'DELETE',

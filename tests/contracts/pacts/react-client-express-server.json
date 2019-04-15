@@ -159,6 +159,164 @@
           }
         }
       }
+    },
+    {
+      "description": "requesting all the fruits",
+      "providerState": "Has some fruit",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/fruits",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "fruits": [
+            {
+              "id": 1,
+              "name": "apple",
+              "calories": 100
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.fruits": {
+            "min": 1
+          },
+          "$.body.fruits[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "updated fruits",
+      "providerState": "Has some fruit",
+      "request": {
+        "method": "PUT",
+        "path": "/api/v1/fruits",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 2,
+          "name": "Durian",
+          "calories": 44
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "fruits": [
+            {
+              "id": 1,
+              "name": "apple",
+              "calories": 100
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.fruits": {
+            "min": 1
+          },
+          "$.body.fruits[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "added fruits",
+      "providerState": "Has some fruit",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/fruits",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 2,
+          "name": "Durian",
+          "calories": 44
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "fruits": [
+            {
+              "id": 1,
+              "name": "apple",
+              "calories": 100
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.fruits": {
+            "min": 1
+          },
+          "$.body.fruits[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "all but the deleted fruits",
+      "providerState": "Has some fruit",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/fruits/2",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "fruits": [
+            {
+              "id": 1,
+              "name": "apple",
+              "calories": 100
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.fruits": {
+            "min": 1
+          },
+          "$.body.fruits[*].*": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {
