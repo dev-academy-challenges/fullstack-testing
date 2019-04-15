@@ -29,6 +29,21 @@ test('addFruit adds a fruit', () => {
     })
 })
 
-test.skip('updateFruit updates a fruit', () => {})
+test('updateFruit updates a fruit', () => {
+  const fruit = {
+    id: 3,
+    name: 'papaya',
+    calories: 26
+  }
+  return db.updateFruit(fruit, testDb)
+    .then(fruits => {
+      expect(fruits[2].name).toBe(fruit.name)
+    })
+})
 
-test.skip('deleteFruit deletes a fruit', () => {})
+test('deleteFruit deletes a fruit', () => {
+  return db.deleteFruit(2, testDb)
+    .then(fruits => {
+      expect(fruits.length).toBe(2)
+    })
+})

@@ -10,6 +10,14 @@ beforeEach(() => {
   db.reset()
 })
 
+test('GET / returns all the fruits', () => {
+  return request(server)
+    .get('/api/v1/fruits')
+    .then(res => {
+      expect(res.body.fruits).toHaveLength(3)
+    })
+})
+
 test('POST / adds a new fruit', () => {
   return request(server)
     .post('/api/v1/fruits')
@@ -19,10 +27,20 @@ test('POST / adds a new fruit', () => {
     })
 })
 
-test('GET / returns all the fruits', () => {
+test('PUT / updates a fruit', () => {
+  const newName = 'durian'
   return request(server)
-    .get('/api/v1/fruits')
+    .put('/api/v1/fruits')
+    .send({ id: 3, name: newName, calories: 26 })
     .then(res => {
-      expect(res.body.fruits).toHaveLength(3)
+      expect(res.body.fruits[2].name).toBe(newName)
+    })
+})
+
+test('DELETE /:id deletes the fruit', () => {
+  return request(server)
+    .delete('/api/v1/fruits/2')
+    .then(res => {
+      expect(res.body.fruits).toHaveLength(2)
     })
 })

@@ -7,8 +7,6 @@ module.exports = {
   deleteFruit
 }
 
-// This function is careful to NOT return an instance of the global
-// `fruits` variable so it can't be modified outside of this module.
 function sort (fruitArray) {
   const allFruits = [...fruitArray]
   allFruits.sort((a, b) => a.id - b.id)
