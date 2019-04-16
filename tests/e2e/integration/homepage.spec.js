@@ -27,7 +27,7 @@ describe('The homepage', () => {
   it('can update fruit', () => {
     const name = 'blueberries'
     cy.server()
-    cy.route('/api//v1/fruits').as('fruits')
+    cy.route('PUT', '/api/v1/fruits').as('fruits')
     cy.visit('/')
     cy.get(secondLink).click()
     cy.get(selectedName).clear()
@@ -40,7 +40,7 @@ describe('The homepage', () => {
   it('can add fruit', () => {
     const name = 'papaya'
     cy.server()
-    cy.route('/api//v1/fruits').as('fruits')
+    cy.route('POST', '/api/v1/fruits').as('fruits')
     cy.visit('/')
     cy.get(addName).type(name)
     cy.get(addCalories).type('62')
@@ -51,7 +51,7 @@ describe('The homepage', () => {
 
   it('can delete fruit', () => {
     cy.server()
-    cy.route('/api//v1/fruits').as('fruits')
+    cy.route('DELETE', '/api/v1/fruits/*').as('fruits')
     cy.visit('/')
     cy.get(lastLink).click()
     cy.get(deleteButton).click()
