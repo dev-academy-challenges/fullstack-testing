@@ -13,7 +13,8 @@ const listeningServer = server.listen(8081)
 describe('Pact Verification', () => {
   it('validates the expectations of the Fruits API', () => {
     const opts = {
-      provider: 'Fruits API',
+      providerVersion: '1.0.0',
+      provider: 'express-server',
       logLevel: 'WARN', // TRACE, DEBUG, INFO, WARN, ERROR, FATAL
       providerBaseUrl: 'http://localhost:8081',
 
@@ -24,12 +25,14 @@ describe('Pact Verification', () => {
         }
       },
 
-      // Local pacts
-      pactUrls: [
-        path.join(__dirname, '../../contracts/pacts/react-client-express-server.json')
-      ],
+      pactBrokerUrl: 'http://localhost',
+      publishVerificationResult: true,
+      tags: ['test']
 
-      providerVersion: '1.0.0'
+      // Local pacts
+      // pactUrls: [
+      //   path.join(__dirname, '../../contracts/pacts/react-client-express-server.json')
+      // ]
     }
 
     return new Verifier(opts).verifyProvider().then(output => {

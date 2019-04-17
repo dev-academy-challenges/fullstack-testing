@@ -33,3 +33,19 @@ You can find the server running on [http://localhost:3000](http://localhost:3000
 * configuration for server-side debugging in VS Code
 * contract testing (consumer & provider) with Pact
 * end-to-end testing with Cypress
+
+
+## Contract testing
+
+This repo uses Pact to perform contract testing. When the client contract tests are run, a Pact file is automatically saved to `tests/contracts/pacts`. Normally the consumer and provider are _not_ in the same repository, so they can't share the same filesystem (the Pact file). The alternative is to use a [Pact Broker](https://github.com/pact-foundation/pact_broker). When the provider verification test are run, Pact contacts the broker service to retrieve the Pact file to perform the verification. This repo uses [a Docker container](https://hub.docker.com/r/dius/pact-broker) to host the broker.
+
+Here is the process for running the contract tests:
+
+* Start the Pact broker and its database with `npm run pact:broker:start`
+* Run the consumer contract tests with `npm run test:contracts:consumer`
+  - This will create the Pact file and save it to `tests/contracts/pacts`
+* Publish the Pact file to the broker with `npm run pact:publish`
+* Run the provider contract verification test with `npm run test:contracts:provider`
+* Stop the Pact broker and its database with `npm run pact:broker:stop`
+
+*Note:* If you'd like run the contract tests without the broker (and the need for Docker), you can uncomment the code in `tests/server/contracts/fruits.test.js` and it will use the local Pact file.

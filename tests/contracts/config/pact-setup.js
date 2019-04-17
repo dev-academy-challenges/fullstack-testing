@@ -13,5 +13,6 @@ global.provider = process.env.NODE_ENV === 'pactTest' && new Pact({
   cors: true,
   pactfileWriteMode: 'update',
   consumer: 'react-client',
-  provider: 'express-server'
+  provider: 'express-server',
+  pactBroker: 'http://localhost'
 })
