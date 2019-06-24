@@ -14,7 +14,7 @@
     "test:contracts": "npm run test:contracts:consumer && npm run test:contracts:provider",
     "test:contracts:consumer": "export NODE_ENV=pactTest && jest tests/client/contracts --runInBand",
     "test:contracts:provider": "jest tests/server/contracts --runInBand",
-    "test:units": "jest tests/client/components tests/server",
+    "test:units": "jest tests/client/components tests/server/routes tests/server/db",
     "pact:broker:start": "docker-compose -f tests/contracts/docker-compose.yml up -d",
     "pact:broker:stop": "docker-compose -f tests/contracts/docker-compose.yml down",
     "pact:publish": "node tests/contracts/publish"

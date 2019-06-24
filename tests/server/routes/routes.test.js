@@ -1,10 +1,10 @@
 require('babel-polyfill')
 const request = require('supertest')
 
-const server = require('../../server/server')
-const db = require('../../server/db/db') // the mock
+const server = require('../../../server/server')
+const db = require('../../../server/db/db') // the mock
 
-jest.mock('../../server/db/db')
+jest.mock('../../../server/db/db')
 
 beforeEach(() => {
   db.reset()
