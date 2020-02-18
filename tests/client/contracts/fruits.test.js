@@ -5,7 +5,7 @@ const {
   addFruit,
   getFruits,
   updateFruit,
-  deleteFruit } = require('../../../client/apiClient')
+  deleteFruit } = require('../../../client/api')
 
 const { like, eachLike } = Matchers
 

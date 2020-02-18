@@ -5,7 +5,7 @@ import {
   addFruit,
   updateFruit,
   deleteFruit
-} from './apiClient'
+} from './api'
 
 class App extends React.Component {
   state = {
@@ -90,8 +90,8 @@ class App extends React.Component {
     const { name: addingName, calories: addingCalories } = this.state.adding
     const { name: editingName, calories: editingCalories } = this.state.editing
     return (
-      <div className='app'>
-        <h1>Fruit FTW!</h1>
+      <div data-testid='app' className='app'>
+        <h1 data-testid='header'>Fruit FTW!</h1>
 
         <ul>
           {this.state.fruits.map(fruit => (
@@ -117,9 +117,15 @@ class App extends React.Component {
             value={editingCalories || ''}
             onChange={this.handleEditChange} />
 
-          <button onClick={this.handleUpdate} data-e2e='update-button'>Update fruit</button>
-          <button onClick={this.handleDelete} data-e2e='delete-button'>Delete fruit</button>
-          <button onClick={this.clearSelected} data-e2e='clear-button'>Clear selection</button>
+          <button
+            onClick={this.handleUpdate}
+            data-e2e='update-button'>Update fruit</button>
+          <button
+            onClick={this.handleDelete}
+            data-e2e='delete-button'>Delete fruit</button>
+          <button
+            onClick={this.clearSelected}
+            data-e2e='clear-button'>Clear selection</button>
         </div>
 
         <h2>Add new</h2>
@@ -136,7 +142,9 @@ class App extends React.Component {
             value={addingCalories || ''}
             onChange={this.handleAddChange} />
 
-          <button onClick={this.handleAdd} data-e2e='add-button'>Add fruit</button>
+          <button
+            onClick={this.handleAdd}
+            data-e2e='add-button'>Add fruit</button>
         </div>
       </div>
     )

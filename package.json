@@ -14,7 +14,7 @@
     "test:contracts": "npm run test:contracts:consumer && npm run test:contracts:provider",
     "test:contracts:consumer": "export NODE_ENV=pactTest && jest tests/client/contracts --runInBand",
     "test:contracts:provider": "jest tests/server/contracts --runInBand",
-    "test:units": "jest tests/client/components tests/server/routes tests/server/db",
+    "test:units": "jest client/components server",
     "pact:broker:start": "docker-compose -f tests/contracts/docker-compose.yml up -d",
     "pact:broker:stop": "docker-compose -f tests/contracts/docker-compose.yml down",
     "pact:publish": "node tests/contracts/publish"
@@ -31,8 +31,6 @@
   },
   "jest": {
     "setupFiles": [
-      "./tests/client/config/jsdom.js",
-      "./tests/client/config/enzyme.js",
       "./tests/contracts/config/pact-setup.js"
     ],
     "setupFilesAfterEnv": [
@@ -52,6 +50,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@pact-foundation/pact": "^8.1.0",
+    "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
