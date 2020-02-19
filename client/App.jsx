@@ -95,7 +95,7 @@ class App extends React.Component {
 
         <ul>
           {this.state.fruits.map(fruit => (
-            <li key={fruit.id}>
+            <li key={fruit.id} data-testid='fruit-item'>
               <a href='#' onClick={this.getSelectHandler(fruit.id)}>
                 {fruit.name}
               </a>

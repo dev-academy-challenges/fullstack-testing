@@ -1,14 +1,12 @@
+import '@babel/polyfill'
 import React from 'react'
-import { render, fireEvent, waitForElement } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import App from './App'
 
-// Prevent <App> from calling the API
-App.prototype.componentDidMount = () => {}
-
 jest.mock('./api.js', () => ({
-  getFruits: () => ([
+  getFruits: () => Promise.resolve([
     {
       id: 1,
       name: 'orange'
@@ -32,8 +30,8 @@ test('page header includes fruit', () => {
   expect(h1).toHaveTextContent('Fruit FTW!')
 })
 
-xtest('renders an <li> for each fruit', () => {
-  const { getAllByRole } = render(<App />)
-  const liList = getAllByRole('li')
-  expect(liList).toHaveLength(3)
+test('renders an <li> for each fruit', async () => {
+  const { findAllByTestId } = render(<App />)
+  const items = await findAllByTestId('fruit-item')
+  expect(items).toHaveLength(3)
 })
